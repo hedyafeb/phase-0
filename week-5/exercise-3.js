@@ -1,24 +1,29 @@
-// HIGHEST SCORE: 
+// HIGHEST SCORE: // quokka
+// undefined -> klo key object blom ada sama skali.
+
 function highestScore (students) {
-    var result = [];
-    var listStudents = Object.values(students); 
-    // console.log(listStudents);
+  var obj = {};
+
+  for (var i=0; i<students.length; i++) {
+    // console.log(students[i].class);
+    var kelas = students[i].class;
     
-    // buat array berisi Object 'class'
-    
-    
-    for (var i=0; i<listStudents.length; i++) {
-        var obj = {};
-        // console.log(listStudents[i].score);
-        // obj[listStudents[i].class] = {}; // gimana ngecek klo udah ada keys tersebut di dalam object?
-        if (listStudents[i].score)
-        
-        result.push(obj);
+    // console.log(obj[kelas].score);
+    if (obj[kelas] === undefined) { // kalau kelas fox / wolves belum ada
+      obj[kelas] = students[i];
     }
-    // console.log(result);
+    else if (obj[kelas] < students[i].score){
+      obj[kelas] = students[i].score
+    }
     
-    
+    // console.log(obj[kelas].class);
+    delete obj[kelas].class;
+  }
+
+  return obj;
 }
+
+// 
 
 // TEST CASE
 console.log(highestScore([
@@ -44,10 +49,10 @@ console.log(highestScore([
   }
 ]));
 
-// {
+// highestScore([
 //   foxes: { name: 'Dimitri', score: 90 },
 //   wolves: { name: 'Alexei', score: 85 }
-// }
+// ]);
 
 
 console.log(highestScore([
