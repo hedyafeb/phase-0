@@ -1,6 +1,3 @@
-// HIGHEST SCORE: // quokka
-// undefined -> klo key object blom ada sama skali.
-
 function highestScore (students) {
   var obj = {};
 
@@ -8,22 +5,20 @@ function highestScore (students) {
     // console.log(students[i].class);
     var kelas = students[i].class;
     
-    // console.log(obj[kelas].score);
+
     if (obj[kelas] === undefined) { // kalau kelas fox / wolves belum ada
       obj[kelas] = students[i];
     }
-    else if (obj[kelas] < students[i].score){
-      obj[kelas] = students[i].score
+    else if (obj[kelas].score < students[i].score){
+      obj[kelas] = students[i]
     }
-    
-    // console.log(obj[kelas].class);
+
     delete obj[kelas].class;
   }
 
   return obj;
 }
 
-// 
 
 // TEST CASE
 console.log(highestScore([
@@ -39,19 +34,19 @@ console.log(highestScore([
   },
   {
     name: 'Sergei',
-    score: 74,
+    score: 100,
     class: 'foxes'
   },
   {
     name: 'Anastasia',
-    score: 78,
+    score: 100,
     class: 'wolves'
   }
 ]));
 
 // highestScore([
-//   foxes: { name: 'Dimitri', score: 90 },
-//   wolves: { name: 'Alexei', score: 85 }
+//   foxes: { name: 'Sergei', score: 100 },
+//   wolves: { name: 'Anastasia', score: 100 }
 // ]);
 
 
